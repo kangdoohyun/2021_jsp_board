@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSP BOARD</title>
 
 <link href="https://cdn.jsdelivr.net/npm/daisyui@1.3.11/dist/full.css"
@@ -13,7 +14,7 @@
 	href="${pageContext.request.contextPath}/resource/font.css" />
 </head>
 <body>
-	<section class="section section-article-write">
+	<section class="section section-article-write px-4">
 		<div class="container mx-auto">
 			<script>
 				let ArticleWrite__submitDone = false;

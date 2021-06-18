@@ -15,7 +15,33 @@
 <body>
 	<section class="section section-article-write">
 		<div class="container mx-auto">
-			<form action="">
+			<script>
+				let ArticleWrite__submitDone = false;
+				
+				function ArticleWrite__submit(form){
+					if(ArticleWrite__submitDone){
+						return;
+					}
+					
+					if(form.title.value.length == 0){
+						alert("제목을 입력해주세요.");
+						form.title.focus();
+						
+						return;
+					}
+					
+					if(form.body.value.length == 0){
+						alert("내용을 입력해주세요.");
+						form.body.focus();
+						
+						return;
+					}
+					
+					form.submit();
+					ArticleWrite__submitDone = true;
+				}
+			</script>
+			<form action="../article/doWrite" method="POST" onsubmit="ArticleWrite__submit(this); return false;">
 				<div class="form-control">
 					<label class="label"> <span class="label-text">제목</span>
 					</label>
@@ -28,6 +54,8 @@
 					</label>
 					<textarea class="textarea h-60 textarea-bordered" name="body" maxlength="2000" placeholder="내용을 입력해 주세요"></textarea>
 				</div>
+				<button type="submit" class="btn btn-ghost">작성</button>
+				<button type="button" class="btn btn-ghost">취소</button>
 			</form>
 		</div>
 	</section>

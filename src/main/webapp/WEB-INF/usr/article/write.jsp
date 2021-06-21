@@ -5,13 +5,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSP BOARD</title>
-
-<link href="https://cdn.jsdelivr.net/npm/daisyui@1.3.11/dist/full.css" rel="stylesheet" type="text/css" />
-
+<!-- 폰트어썸 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
+<!-- 테일윈드 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.0/tailwind.min.css" />
-
+<!-- 데이지UI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@1.3.11/dist/full.css" rel="stylesheet" type="text/css" />
+<!-- 내부 css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/font.css" />
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/common.css" />
@@ -24,7 +24,7 @@
 					<a href="javascript:history.back();" class="cursor-pointer">
 						<i class="fas fa-chevron-left"></i>
 					</a>
-					<span>게시물 상세페이지</span>
+					<span>게시물 작성페이지</span>
 				</div>
 				<div class="p-4">
 					<script>

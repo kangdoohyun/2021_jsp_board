@@ -8,38 +8,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kdh.exam.exam1.http.Rq;
 import com.kdh.mysqlutil.MysqlUtil;
-import com.kdh.mysqlutil.SecSql;
 
 @WebServlet("/usr/*")
 public class DispatcherServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		파라미터 인코딩 UTF-8
-		req.setCharacterEncoding("UTF-8");
-//		서블릿이 HTML 파일을 만들 때 인코딩 UTF-8 
-		req.setCharacterEncoding("UTF-8");
-//		HTML이 UTF-8 인코딩이라는 것을 브라우저에게 전달한다
-		resp.setContentType("text/html; charset=UTF-8");
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		Rq rq = new Rq(req, resp);
 		
-		String requestUri = req.getRequestURI();
-		String[] requestUriBits = requestUri.split("/");
-		
-		int minBitsCount = 5;
-		
-		if (requestUriBits.length < minBitsCount) {
-			resp.getWriter().append("올바른 요청이 아닙니다.");
-			return;
+		if ( rq.isInvalid() ) {
+			rq.println("올바르지 않은 요청입니다.");
+			rq.println("<br>");
 		}
 		
-		String controllerTypeName = requestUriBits[2];
-		String controllerName = requestUriBits[3];
-		String actionMethodName = requestUriBits[4];
-		
-		resp.getWriter().append("controllerTypeName : " + controllerTypeName);
-		resp.getWriter().append("<br>");
-		resp.getWriter().append("controllerName : " + controllerName);
-		resp.getWriter().append("<br>");
-		resp.getWriter().append("actionMethodName : " + actionMethodName);
+		rq.println("controllerTypeName : " + rq.getControllerTypeName());
+		rq.println("<br>");
+		rq.println("controllerName : " + rq.getControllerName());
+		rq.println("<br>");
+		rq.println("actionMethodName : " + rq.getActionMethodName());
 		
 		MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "2021_jsp_board");
 

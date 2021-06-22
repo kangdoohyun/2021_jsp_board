@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kdh.exam.exam1.http.Rq;
+import com.kdh.exam.exam1.http.controller.Controller;
+import com.kdh.exam.exam1.http.controller.UsrArticleController;
 import com.kdh.mysqlutil.MysqlUtil;
 
 @WebServlet("/usr/*")
@@ -27,12 +29,25 @@ public class DispatcherServlet extends HttpServlet {
 		rq.println("<br>");
 		rq.println("actionMethodName : " + rq.getActionMethodName());
 		
-		MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "2021_jsp_board");
-
-		MysqlUtil.setDevMode(true);
+		Controller controller = null;
 		
+		switch( rq.getControllerTypeName() ) {
+		case "usr":
+			switch( rq.getControllerName() ) {
+			case "article":
+				controller = new UsrArticleController();
+			}
+			break;
+		}
 		
-		MysqlUtil.closeConnection();
+		if ( controller != null ) {
+			MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "2021_jsp_board");
+			MysqlUtil.setDevMode(true);
+			
+			controller.performAction(rq);
+			
+			MysqlUtil.closeConnection();
+		}
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

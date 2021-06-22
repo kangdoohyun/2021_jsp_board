@@ -18,11 +18,11 @@ public class Rq {
 	private String controllerTypeName;
 	private String controllerName;
 	private String actionMethodName;
-	
+
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
 		this.req = req;
 		this.resp = resp;
-		
+
 //		파라미터 인코딩 UTF-8
 		try {
 			req.setCharacterEncoding("UTF-8");
@@ -33,12 +33,12 @@ public class Rq {
 		resp.setCharacterEncoding("UTF-8");
 //		HTML이 UTF-8 인코딩이라는 것을 브라우저에게 전달한다
 		resp.setContentType("text/html; charset=UTF-8");
-		
+
 		String requestUri = req.getRequestURI();
 		String[] requestUriBits = requestUri.split("/");
-		
+
 		int minBitsCount = 5;
-		
+
 		if (requestUriBits.length < minBitsCount) {
 			isInvalid = true;
 			return;
@@ -46,7 +46,7 @@ public class Rq {
 		int controllerTypeNameIndex = 2;
 		int controllerNameIndex = 3;
 		int actionMethodNameIndex = 4;
-		
+
 		this.controllerTypeName = requestUriBits[controllerTypeNameIndex];
 		this.controllerName = requestUriBits[controllerNameIndex];
 		this.actionMethodName = requestUriBits[actionMethodNameIndex];
@@ -71,6 +71,19 @@ public class Rq {
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String getParam(String paramName, String defalultValue) {
+		String paramValue = req.getParameter(paramName);
+
+		if (paramValue == null) {
+			return defalultValue;
+		}
+		return paramValue;
+	}
+
+	public void printf(String format, Object... args) {
+		print(String.format(format, args));
 	}
 
 }

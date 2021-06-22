@@ -23,12 +23,6 @@ public class DispatcherServlet extends HttpServlet {
 			rq.println("<br>");
 		}
 		
-		rq.println("controllerTypeName : " + rq.getControllerTypeName());
-		rq.println("<br>");
-		rq.println("controllerName : " + rq.getControllerName());
-		rq.println("<br>");
-		rq.println("actionMethodName : " + rq.getActionMethodName());
-		
 		Controller controller = null;
 		
 		switch( rq.getControllerTypeName() ) {

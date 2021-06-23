@@ -2,23 +2,30 @@ package com.kdh.exam.exam1.http;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kdh.exam.exam1.dto.Article;
 import com.kdh.exam.exam1.util.Ut;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 
-@Data
+@ToString
 public class Rq {
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
+	@Getter
 	private boolean isInvalid = false;
+	@Getter
 	private String controllerTypeName;
+	@Getter
 	private String controllerName;
+	@Getter
 	private String actionMethodName;
 
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
@@ -93,6 +100,14 @@ public class Rq {
 		printf("alert('%s');", msg);
 		println("history.back();");
 		println("</script>");
+	}
+
+	public void println(Object obj) {
+		println(obj.toString());
+	}
+
+	public void setAttr(String attrName, Object attrValue) {
+		req.setAttribute(attrName, attrValue);
 	}
 
 }

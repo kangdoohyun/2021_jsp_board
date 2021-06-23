@@ -4,15 +4,28 @@ import java.util.Map;
 
 import com.kdh.exam.exam1.util.Ut;
 
-import lombok.Data;
-@Data
+import lombok.Getter;
+import lombok.ToString;
+
+@ToString
 public class ResultData {
+	@Getter
 	private String msg;
+	@Getter
 	private String resultCode;
+	@Getter
 	private Map<String, Object> body;
 	
 	private ResultData() {
 		
+	}
+	
+	public boolean isSeccess() {
+		return resultCode.startsWith("S-");
+	}
+	
+	public boolean isFail() {
+		return !isSeccess();
 	}
 	
 	public static ResultData from(String resultCode, String msg, Object... args) {

@@ -1,7 +1,10 @@
 package com.kdh.exam.exam1.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Article {
 	private int id;

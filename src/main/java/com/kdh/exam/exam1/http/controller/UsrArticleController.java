@@ -1,5 +1,8 @@
 package com.kdh.exam.exam1.http.controller;
 
+import java.util.List;
+
+import com.kdh.exam.exam1.dto.Article;
 import com.kdh.exam.exam1.dto.ResultData;
 import com.kdh.exam.exam1.http.Rq;
 import com.kdh.exam.exam1.http.service.ArticleService;
@@ -10,6 +13,7 @@ public class UsrArticleController extends Controller {
 	public UsrArticleController() {
 		articleService = new ArticleService();
 	}
+	
 	@Override
 	public void performAction(Rq rq) {
 		switch ( rq.getActionMethodName() ) {
@@ -27,6 +31,10 @@ public class UsrArticleController extends Controller {
 	}
 
 	private void actionShowList(Rq rq) {
+		List<Article> articles = articleService.getForPrintArticles();
+		
+		rq.setAttr("articles", articles);
+		
 		rq.jsp("usr/article/list");
 	}
 

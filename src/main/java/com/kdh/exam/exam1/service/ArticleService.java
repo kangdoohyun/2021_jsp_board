@@ -1,11 +1,11 @@
-package com.kdh.exam.exam1.http.service;
+package com.kdh.exam.exam1.service;
 
 import java.util.List;
 
 import com.kdh.exam.exam1.container.Container;
 import com.kdh.exam.exam1.dto.Article;
 import com.kdh.exam.exam1.dto.ResultData;
-import com.kdh.exam.exam1.http.repository.ArticleRepository;
+import com.kdh.exam.exam1.repository.ArticleRepository;
 import com.kdh.exam.exam1.util.Ut;
 
 public class ArticleService {

@@ -1,4 +1,4 @@
-package com.kdh.exam.exam1.http.repository;
+package com.kdh.exam.exam1.repository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.kdh.exam.exam1.http.service;
+package com.kdh.exam.exam1.service;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

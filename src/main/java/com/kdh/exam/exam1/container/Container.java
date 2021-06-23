@@ -1,8 +1,8 @@
 package com.kdh.exam.exam1.container;
 
 import com.kdh.exam.exam1.http.controller.UsrArticleController;
-import com.kdh.exam.exam1.http.repository.ArticleRepository;
-import com.kdh.exam.exam1.http.service.ArticleService;
+import com.kdh.exam.exam1.repository.ArticleRepository;
+import com.kdh.exam.exam1.service.ArticleService;
 
 public class Container {
 	public static ArticleRepository articleRepository;

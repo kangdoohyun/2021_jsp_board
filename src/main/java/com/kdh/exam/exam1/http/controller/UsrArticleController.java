@@ -10,10 +10,10 @@ import com.kdh.exam.exam1.service.ArticleService;
 
 public class UsrArticleController extends Controller {
 	private ArticleService articleService = Container.articleService;
-	
+
 	@Override
 	public void performAction(Rq rq) {
-		switch ( rq.getActionMethodName() ) {
+		switch (rq.getActionMethodName()) {
 		case "write":
 			actionShowWrite(rq);
 			break;
@@ -23,39 +23,47 @@ public class UsrArticleController extends Controller {
 		case "list":
 			actionShowList(rq);
 			break;
+		default:
+			rq.println("존재하지 않는 페이지입니다");
+			break;
 		}
-		
+
 	}
 
 	private void actionShowList(Rq rq) {
 		List<Article> articles = articleService.getForPrintArticles();
-		
+
 		rq.setAttr("articles", articles);
-		
+
 		rq.jsp("usr/article/list");
 	}
 
 	private void actionDoWrite(Rq rq) {
 		String title = rq.getParam("title", "");
-		String body= rq.getParam("body", "");
-		
-		if(title.length() == 0) {
+		String body = rq.getParam("body", "");
+		String redirectUri = rq.getParam("redirectUri", "../article/list");
+
+		if (title.length() == 0) {
 			rq.historyBack("제목을 입력해주세요");
 			return;
 		}
-		
-		if(body.length() == 0) {
+
+		if (body.length() == 0) {
 			rq.historyBack("내용을 입력해주세요");
 			return;
 		}
-		
+
 		ResultData writeRd = articleService.write(title, body);
-		
-		rq.printf(writeRd.getMsg());
+
+		int id = (int) writeRd.getBody().get("id");
+
+		redirectUri = redirectUri.replace("[NEW_ID]", id + "");
+
+		rq.replace(writeRd.getMsg(), redirectUri);
 	}
 
 	private void actionShowWrite(Rq rq) {
 		rq.jsp("usr/article/write");
 	}
-	
+
 }

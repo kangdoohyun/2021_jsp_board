@@ -117,4 +117,20 @@ public class Rq {
 		println("</script>");
 	}
 
+	public int getIntParam(String paramName, int defalultValue) {
+		String paramValue = req.getParameter(paramName);
+
+		if (paramValue == null) {
+			return defalultValue;
+		}
+		
+		try {
+			return Integer.parseInt(paramValue);
+		}
+		catch(NumberFormatException e) {
+			return defalultValue;
+		}
+		
+	}
+
 }

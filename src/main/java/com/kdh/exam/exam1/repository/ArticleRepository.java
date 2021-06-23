@@ -27,4 +27,12 @@ public class ArticleRepository {
 		return MysqlUtil.selectRows(sql, Article.class);
 	}
 
+	public Article getForPrintArticleById(int id) {
+		SecSql sql = new SecSql();
+		sql.append("SELECT A.* FROM article AS A WHERE A.id = ?", id);
+		Article article = MysqlUtil.selectRow(sql, Article.class);
+		
+		return article;
+	}
+
 }

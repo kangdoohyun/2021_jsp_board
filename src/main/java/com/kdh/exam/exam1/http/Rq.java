@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kdh.exam.exam1.util.Ut;
+
 import lombok.Data;
 
 @Data
@@ -83,7 +85,14 @@ public class Rq {
 	}
 
 	public void printf(String format, Object... args) {
-		print(String.format(format, args));
+		print(Ut.f(format, args));
+	}
+
+	public void historyBack(String msg) {
+		println("<script>");
+		printf("alert('%s');", msg);
+		println("history.back();");
+		println("</script>");
 	}
 
 }

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kdh.exam.exam1.dto.Member;
 import com.kdh.exam.exam1.util.Ut;
 
 import lombok.Getter;
@@ -131,4 +132,15 @@ public class Rq {
 		
 	}
 
+	public void setSessionAttr(String attrName, String attrValue) {
+		req.getSession().setAttribute(attrName, attrValue);
+	}
+
+	public void removeSessionAttr(String attrName) {
+		req.getSession().removeAttribute(attrName);
+	}
+	
+	public <T> T getSessionAttr(String attrName) {
+		return 	(T)req.getSession().getAttribute(attrName);
+	}
 }

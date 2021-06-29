@@ -53,13 +53,13 @@
 						</a>
 					</li>
 					<li class="h-full">
-						<a href="#" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+						<a href="../member/login" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
 							<span><i class="fas fa-sign-in-alt"></i></span>
 							<span>LOGIN</span>
 						</a>
 					</li>
 					<li class="h-full">
-						<a href="#" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+						<a href="../member/join" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
 							<span><i class="fas fa-user-alt"></i></span>
 							<span>JOIN</span>
 						</a>

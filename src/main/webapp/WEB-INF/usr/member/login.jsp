@@ -21,16 +21,16 @@
 							return;
 						}
 
-						if (form.title.value.length == 0) {
-							alert("제목을 입력해주세요.");
-							form.title.focus();
+						if (form.loginId.value.length == 0) {
+							alert("아이디를 입력해주세요.");
+							form.loginId.focus();
 
 							return;
 						}
 
-						if (form.body.value.length == 0) {
-							alert("내용을 입력해주세요.");
-							form.body.focus();
+						if (form.loginPw.value.length == 0) {
+							alert("비밀번호를 입력해주세요.");
+							form.loginPw.focus();
 
 							return;
 						}
@@ -39,10 +39,8 @@
 						MemberLogin__submitDone = true;
 					}
 				</script>
-				<form action="../article/doWrite" method="POST"
+				<form action="../member/doLogin" method="POST"
 					onsubmit="MemberLogin__submit(this); return false;">
-					<input type="hidden" name="redirectUri"
-						value="../article/detail?id=[NEW_ID]" />
 					<div class="form-control">
 						<label class="label"> <span class="label-text">로그인 아이디</span>
 						</label>
@@ -54,8 +52,8 @@
 					<div class="form-control">
 						<label class="label"> <span class="label-text">로그인 비밀번호</span>
 						</label>
-						<input class="input input-bordered w-full" type="password"
-								name="loginId" maxlength="100" placeholder="로그인 비밀번호를 입력해 주세요" />
+						<input class="input input-bordered w-full" type="text"
+								name="loginPw" maxlength="100" placeholder="로그인 비밀번호를 입력해 주세요" />
 					</div>
 					<button type="submit" class="btn btn-ghost">로그인</button>
 				</form>

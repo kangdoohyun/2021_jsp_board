@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${pageTitle}|JSP BOARD</title>
+<title>${pageTitle}|JSPBOARD</title>
 <!-- 폰트어썸 -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -35,35 +36,72 @@
 			<nav class="top-bat__menu-box-1 flex">
 				<ul class="flex items-center">
 					<li class="h-full">
-						<a href="#" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
-							<span><i class="fas fa-home"></i></span>
+						<a href="#"
+							class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+							<span>
+								<i class="fas fa-home"></i>
+							</span>
 							<span>HOME</span>
 						</a>
 					</li>
 					<li class="h-full">
-						<a href="#" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
-							<span><i class="fas fa-bell"></i></span>
+						<a href="#"
+							class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+							<span>
+								<i class="fas fa-bell"></i>
+							</span>
 							<span>NOTICE LIST</span>
 						</a>
 					</li>
 					<li class="h-full">
-						<a href="#" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
-							<span><i class="fas fa-comments"></i></span>
+						<a href="#"
+							class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+							<span>
+								<i class="fas fa-comments"></i>
+							</span>
 							<span>FREE LIST</span>
 						</a>
 					</li>
-					<li class="h-full">
-						<a href="../member/login" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
-							<span><i class="fas fa-sign-in-alt"></i></span>
-							<span>LOGIN</span>
-						</a>
-					</li>
-					<li class="h-full">
-						<a href="../member/join" class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
-							<span><i class="fas fa-user-alt"></i></span>
-							<span>JOIN</span>
-						</a>
-					</li>
+					<c:if test="${loginedMemberJson == null}">
+						<li class="h-full">
+							<a href="../member/login"
+								class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+								<span>
+									<i class="fas fa-sign-in-alt"></i>
+								</span>
+								<span>LOGIN</span>
+							</a>
+						</li>
+						<li class="h-full">
+							<a href="../member/join"
+								class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+								<span>
+									<i class="fas fa-user-alt"></i>
+								</span>
+								<span>JOIN</span>
+							</a>
+						</li>
+					</c:if>
+					<c:if test="${loginedMemberJson != null}">
+						<li class="h-full">
+							<a href="../member/doLogout"
+								class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+								<span>
+									<i class="fas fa-sign-out-alt"></i>
+								</span>
+								<span>LOGOUT</span>
+							</a>
+						</li>
+						<li class="h-full">
+							<a href="../member/mypage"
+								class="h-full flex items-center px-4 border-b-2 border-transparent hover:border-black">
+								<span>
+									<i class="fas fa-user"></i>
+								</span>
+								<span>MY PAGE</span>
+							</a>
+						</li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>

@@ -63,12 +63,12 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 		
-//		Article article = articleService.getForPrintArticleById(id);
-//		
-//		if(article == null) {
-//			rq.historyBack(Ut.f("%d번 게시물은 존재하지 않습니다", id));
-//			return;
-//		}
+		Article article = articleService.getForPrintArticleById(id);
+		
+		if(article == null) {
+			rq.historyBack(Ut.f("%d번 게시물은 존재하지 않습니다", id));
+			return;
+		}
 
 		ResultData modifyRd = articleService.modify(id, title, body);
 

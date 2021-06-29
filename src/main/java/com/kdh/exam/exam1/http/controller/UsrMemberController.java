@@ -46,7 +46,9 @@ public class UsrMemberController extends Controller {
 			rq.historyBack(loginRd.getMsg());
 		}
 		Member member = (Member)loginRd.getBody().get("member");
-		rq.setSessionAttr("loginedMemberJson", Ut.toJson(member));
+		
+		rq.setSessionAttr("loginedMemberJson", Ut.toJson(member, ""));
+		
 		rq.replace(loginRd.getMsg(), "../article/list");
 	}
 
